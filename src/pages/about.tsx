@@ -15,7 +15,7 @@ import type { IconType } from 'react-icons';
 export default function About(): JSX.Element {
   return (
     <main className='layout min-h-screen'>
-      <SEO title='About' description='Risal Amin is a web developer' />
+      <SEO title='About' description='Alfino Raditya is a web developer' />
       <section className='grid gap-2'>
         <motion.h2
           className='text-xl font-bold md:text-3xl'
@@ -27,7 +27,7 @@ export default function About(): JSX.Element {
           className='text-2xl font-bold md:text-4xl'
           {...setTransition({ delayIn: 0.1 })}
         >
-          <Accent>Risal Amin</Accent>
+          <Accent>Alfino Raditya</Accent>
         </motion.h1>
       </section>
       <section className='mt-4'>

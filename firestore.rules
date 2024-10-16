@@ -1,12 +1,27 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    
+    // Aturan untuk koleksi 'contents'
     match /contents/{slug} {
+      // Izinkan semua orang untuk membaca, membuat, dan memperbarui dokumen
       allow read, create, update: if true;
     }
 
+    // Aturan untuk koleksi 'guestbook'
     match /guestbook/{guestbookId} {
+      // Izinkan semua orang untuk membaca, membuat, dan menghapus dokumen
       allow read, create, delete: if true;
+    }
+    
+    // Aturan untuk koleksi 'blogs'
+    match /blogs/{blogId} {
+      // Izinkan semua orang untuk membaca dokumen
+      allow read: if true;
+      // Izinkan hanya pengguna terautentikasi untuk membuat dan memperbarui dokumen
+      allow create, update: if request.auth != null;
+      // Izinkan pengguna terautentikasi untuk menghapus dokumen
+      allow delete: if request.auth != null && request.auth.uid == resource.data.userId; // Hanya pengirim yang bisa menghapus
     }
   }
 }
